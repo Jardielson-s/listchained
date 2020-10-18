@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
-#include "function.c"
+
 
 
 struct list{
@@ -13,15 +13,74 @@ typedef struct list node;
 
 node *ini = NULL;
 
-void menu(){
-printf("\n\t 1- insert value");
-printf("\n\t 2- show list");
 
-}
-
+void menu();
 void create_list(){
   ini = NULL;
 }
+
+int insert(int v);
+void print();
+int remove_start();
+node *sarch(int v);
+int remove_data(int v);
+
+
+
+
+
+int main(){
+
+
+int op,v,aux,*aux1;
+ do{
+
+  menu();
+  printf("\n\t choose option:\t");
+  scanf("%d",&op);
+
+  switch(op){
+   case 1:
+     printf("\n\t type it value:\t");
+     scanf("%d",&v);
+     aux = insert(v);
+     if(aux == 0)
+     {
+      printf("\n\t element not insert");
+     }
+     else
+     {
+      printf("\n\t element insert");
+     }
+     break;
+   case 2:
+     print();
+     break;
+   case 3:
+     remove_start();
+     break;
+
+   case 4:
+     printf("\n\t type it value:\t");
+     scanf("%d",&v);
+     aux1 = sarch(v);
+     printf("\n\t info = %d",*aux1);
+     break;
+   case 5:
+     printf("\n\t type it value:\t");
+     scanf("%d",&v);
+     aux = remove_data(v);
+     if(aux == 1)
+      printf("\n\t value deleted");
+     else
+      printf("\n\t value not found");
+     break;
+  }
+ }while(op != 0);
+
+return 0;
+}
+
 
 int insert(int v){
 
@@ -49,6 +108,15 @@ int insert(int v){
  return 1;
 }
 
+void menu(){
+printf("\n\t 1- insert value");
+printf("\n\t 2- show list");
+printf("\n\t 3- remove of start");
+printf("\n\t 4- sarch of value");
+printf("\n\t 5- delete the value");
+
+}
+
 void print(){
 
   node *p;
@@ -68,37 +136,82 @@ void print(){
   printf("\n\t----end list----");
 }
 
+int remove_start(){
+
+ node *p;
+ if(ini == NULL)
+ {
+   return 0;
+ }
+ else
+ {
+   p = ini;
+   ini = ini->next;
+   free(p);
+   return 1;
+ }
+}
+
+node *sarch(int v){
+
+ node *p;
+ if(ini == NULL)
+ {
+  return NULL;
+ }
+
+ p = ini;
+
+ while(p != NULL)
+ {
+  if(p->value == v)
+  {
+   return(p);
+  }
+  else
+  {
+   p = p->next;
+  }
+ }
+ return NULL;
+}
 
 
-int main(){
+int remove_data(int v){
 
+ node *p,*antes;
 
-int op,v,aux;
- do{
+ if(ini == NULL)
+ {
+  return 0;
+ }
+ else
+ {
+  p = ini;
+  antes = ini;
+  while(p != NULL){
 
-  menu();
-  printf("\n\t choose option:\t");
-  scanf("%d",&op);
-
-  switch(op){
-   case 1:
-     printf("\n\t type it value:\t");
-     scanf("%d",&v);
-     aux = insert(v);
-     if(aux == 0)
+   if(p->value == v)
+   {
+     if(p == ini)
      {
-      printf("\n\t element not insert");
+       ini = ini->next;
+       free(p);
+       return 1;
      }
      else
      {
-      printf("\n\t element insert");
+      antes->next = p->next;
+      free(p);
+      return 1;
      }
-     break;
-   case 2:
-     print();
-     break;
+   }
+   else
+   {
+     antes = p;
+     p = p->next;
+   }
   }
- }while(op != 0);
-
-return 0;
+  return 0;
+ }
 }
