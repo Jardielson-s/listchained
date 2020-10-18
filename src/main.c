@@ -15,10 +15,7 @@ node *ini = NULL;
 
 
 void menu();
-void create_list(){
-  ini = NULL;
-}
-
+void create_list();
 int insert(int v);
 void print();
 int remove_start();
@@ -64,7 +61,10 @@ int op,v,aux,*aux1;
      printf("\n\t type it value:\t");
      scanf("%d",&v);
      aux1 = sarch(v);
-     printf("\n\t info = %d",*aux1);
+     if(aux1 != 0)
+      printf("\n\t value found info = %d",*aux1);
+     else
+      printf("\n\t value ot found");
      break;
    case 5:
      printf("\n\t type it value:\t");
@@ -116,6 +116,11 @@ printf("\n\t 4- sarch of value");
 printf("\n\t 5- delete the value");
 
 }
+
+void create_list(){
+  ini = NULL;
+}
+
 
 void print(){
 
