@@ -136,6 +136,6 @@ int remove_data(int v){
      p = p->next;
    }
   }
-  return 0
+  return 0;
  }
 }
