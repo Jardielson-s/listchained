@@ -1,4 +1,3 @@
-typedef struct list node;
 
 struct list{
 
@@ -6,6 +5,9 @@ struct list{
  struct list *next;
 
 };
+
+typedef struct list node;
+
 
 node *ini = NULL;
 
