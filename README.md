@@ -2,5 +2,5 @@
 
 * isso é um pequeno programinha usando lista com estrutura de dados
 * exercício da disciplinna estrutura de dados
-### informations additional
+### informação adicional
 * IDE code::blocks
