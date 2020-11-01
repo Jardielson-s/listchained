@@ -1,7 +1,7 @@
 # listEncoded
 
 * isso é um pequeno programinha usando lista com estrutura de dados
-* college exercise
+* exercício da disciplinna estrutura de dados
 * chained type list without dynamic allocation
 ### informations additional
 * IDE code::blocks
