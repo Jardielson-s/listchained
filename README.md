@@ -1,6 +1,6 @@
 # listEncoded
-## OBJECTVE
-* this is a small application to demonstrate the operation of the simple chained list data structure
+
+* isso é um pequeno programinha usando lista com estrutura de dados
 * college exercise
 * chained type list without dynamic allocation
 ### informations additional
